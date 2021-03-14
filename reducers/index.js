@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
 
-import statsReducer from './statsReducer'
+import consumptionReducer from './consumptionReducer'
 
 const rootReducer = combineReducers({
-    stats : statsReducer
+    consumption : consumptionReducer
 })
 
 export default rootReducer
