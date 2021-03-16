@@ -2,6 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import {StyleSheet, Text, View, Button, Alert, TextInput, ScrollView, SafeAreaView, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard} from 'react-native'
 import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { calculateConsumption } from '../actions/consumptionActions'
+
 // import { ReactReduxContext } from 'react-redux'
 // import connect from "react-redux/es/connect/connect"
 
@@ -23,7 +26,8 @@ class HomeScreen extends React.Component {
         printersNumber: '',
         modemsNumber: '',
         electricblanketsNumber: '',
-        phonesNumber: ''
+        phonesNumber: '',
+        totalUsage: ''
     }
 
     TvHandler = (tvNumber) => {this.setState({ tvNumber })}
@@ -40,11 +44,42 @@ class HomeScreen extends React.Component {
     ModemsHandler = (modemsNumber) => {this.setState({ modemsNumber})}
     ElectricblanketsHandler = (electricblanketsNumber) => {this.setState({electricblanketsNumber})}
     PhonesHandler = (phonesNumber) => {this.setState({phonesNumber})}
+
+
+
+    // calculate = () => {
+
+        // let { actions } = this.props
+
+
+     calculate = () => {
+        let TvUsage = 0.72
+        let DecoderUsage = 0.72
+        let SoundSystemUsage = 0.6
+        let LightUsage = 0.16
+        let HeaterUsage = 0.026
+        let StoveUsage = 2
+        let FridgeUsage = 9.6
+        let KettleUsage = 0.333
+        let MicrowaveUsage = 0.257
+        let ComputerUsage = 0.24
+        let PrinterUsage = 0.005
+        let ModemUsage = 0.288
+        let ElectricBlanket = 0.015
+        let PhoneUsage = 0.12
+    
+        let totalUsage = (this.state.tvNumber * TvUsage + this.state.decoderNumber * DecoderUsage + this.state.soundSystemNumber * SoundSystemUsage + this.state.lightsNumber * LightUsage + this.state.heatersNumber * HeaterUsage + this.state.stovesNumber * StoveUsage + this.state.fridgesNumber * FridgeUsage + this.state.kettlesNumber * KettleUsage + this.state.microwavesNumber * MicrowaveUsage + this.state.computersNumber * ComputerUsage + this.state.printersNumber * PrinterUsage +  this.state.modemsNumber * ModemUsage + this.state.electricblanketsNumber * ElectricBlanket + this.state.phonesNumber * PhoneUsage )
+        return this.setState({totalUsage})
+    }
+
+                
+
+    
    
 
 
     componentDidUpdate(){
-
+        // this.calculate()
     }
 
 
@@ -186,8 +221,12 @@ class HomeScreen extends React.Component {
                             value={this.state.phonesNumber}
                         />
                     </View>
+                    <Button
+                        title = "Calculate"
+                        onPress = {this.calculate}
+                    />
                     <Text>Consumption: {this.props.consumption.consumption} kWh </Text>
-                    <Text>{this.state.tvNumber}</Text>
+                    <Text>{this.state.totalUsage}</Text>
                     {/* <Button
                         title="Calculate"
                         onPress={()=>{ Alert.alert('You pressed the calculate button')}}
@@ -203,6 +242,10 @@ class HomeScreen extends React.Component {
 
     }
 }
+
+
+
+
 // Map Redux state to React component props 
 
 const mapStateToProps = (state) => {
@@ -210,8 +253,12 @@ const mapStateToProps = (state) => {
     return { consumption }
 }
 
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({calculateConsumption}, dispatch)
+)
+
 // Connect Redux to React 
-export default connect(mapStateToProps)(HomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
 
 
 const styles = StyleSheet.create({
