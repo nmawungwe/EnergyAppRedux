@@ -55,9 +55,11 @@ class HomeScreen extends React.Component {
                 style={styles.container}
             >
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View 
-                    style={styles.inner}
-                >
+                <SafeAreaView>
+                    <ScrollView 
+                        keyboardDismissMode="interactive"
+                         >
+                    <View style={styles.inner}>
                     <View style={styles.inputRow}>
                         <Text>Number of TVs: </Text>
                         <TextInput style={styles.textInput}
@@ -191,7 +193,9 @@ class HomeScreen extends React.Component {
                         onPress={()=>{ Alert.alert('You pressed the calculate button')}}
                     /> */}
                     < StatusBar />
-                </View>
+                    </View>
+                    </ScrollView>
+                </SafeAreaView>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
     )
@@ -222,7 +226,7 @@ const styles = StyleSheet.create({
         padding: 24,
         flex: 1,
         justifyContent: 'center',
-        paddingTop: StatusBar.currentHeight,
+        // paddingTop: StatusBar.currentHeight,
         alignItems: 'center',
     },
     inputRow: {
