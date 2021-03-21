@@ -4,6 +4,7 @@ import {StyleSheet, Text, View, Button, Alert, TextInput, ScrollView, SafeAreaVi
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { calculateConsumption } from '../actions/consumptionActions'
+import * as actions from '../actions/consumptionActions'
 
 // import { ReactReduxContext } from 'react-redux'
 // import connect from "react-redux/es/connect/connect"
@@ -47,12 +48,10 @@ class HomeScreen extends React.Component {
 
 
 
-    // calculate = () => {
+    calculate = () => {
 
         // let { actions } = this.props
 
-
-     calculate = () => {
         let TvUsage = 0.72
         let DecoderUsage = 0.72
         let SoundSystemUsage = 0.6
@@ -69,8 +68,34 @@ class HomeScreen extends React.Component {
         let PhoneUsage = 0.12
     
         let totalUsage = (this.state.tvNumber * TvUsage + this.state.decoderNumber * DecoderUsage + this.state.soundSystemNumber * SoundSystemUsage + this.state.lightsNumber * LightUsage + this.state.heatersNumber * HeaterUsage + this.state.stovesNumber * StoveUsage + this.state.fridgesNumber * FridgeUsage + this.state.kettlesNumber * KettleUsage + this.state.microwavesNumber * MicrowaveUsage + this.state.computersNumber * ComputerUsage + this.state.printersNumber * PrinterUsage +  this.state.modemsNumber * ModemUsage + this.state.electricblanketsNumber * ElectricBlanket + this.state.phonesNumber * PhoneUsage )
-        return this.setState({totalUsage})
-    }
+        
+        this.setState({totalUsage})
+        
+        
+        
+        this.props.calculateConsumption(totalUsage)
+        }
+
+
+
+        // let { actions } = this.props
+
+      componentDidMount() {
+
+
+ 
+        
+        // calculateConsumption(totalUsage)
+
+      }  
+
+
+    //  calculate = () => {
+
+    //     // let { calculateConsumption } = this.props
+
+
+    // }
 
                 
 
@@ -225,8 +250,8 @@ class HomeScreen extends React.Component {
                         title = "Calculate"
                         onPress = {this.calculate}
                     />
-                    <Text>Consumption: {this.props.consumption.consumption} kWh </Text>
-                    <Text>{this.state.totalUsage}</Text>
+                    <Text>Consumption: {this.props.consumption} kWh </Text>
+                    {/* <Text>{this.state.totalUsage}</Text> */}
                     {/* <Button
                         title="Calculate"
                         onPress={()=>{ Alert.alert('You pressed the calculate button')}}
@@ -246,16 +271,22 @@ class HomeScreen extends React.Component {
 
 
 
-// Map Redux state to React component props 
+// Map Redux state to React component props
+ 
 
 const mapStateToProps = (state) => {
-    const { consumption } = state
-    return { consumption }
+    return {
+        consumption:  state.consumption.consumption
+    }
+
 }
 
-const mapDispatchToProps = dispatch => (
-    bindActionCreators({calculateConsumption}, dispatch)
-)
+const mapDispatchToProps = dispatch => {
+    return {
+        // https://dev.to/colerau/how-redux-s-mapdispatchtoprops-works-3aal 
+        calculateConsumption: totalUsage => dispatch(calculateConsumption(totalUsage)), 
+    }
+}
 
 // Connect Redux to React 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
