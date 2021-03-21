@@ -250,7 +250,7 @@ class HomeScreen extends React.Component {
                         title = "Calculate"
                         onPress = {this.calculate}
                     />
-                    <Text>Consumption: {this.props.consumption} kWh </Text>
+                    <Text>Consumption: {this.props.consumption} kWh/day </Text>
                     {/* <Text>{this.state.totalUsage}</Text> */}
                     {/* <Button
                         title="Calculate"
