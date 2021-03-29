@@ -3,7 +3,7 @@ import {combineReducers} from 'redux'
 import consumptionReducer from './consumptionReducer'
 
 const rootReducer = combineReducers({
-    consumption : consumptionReducer
+    data : consumptionReducer
 })
 
 export default rootReducer

@@ -28,9 +28,10 @@ class HomeScreen extends React.Component {
         modemsNumber: '',
         electricblanketsNumber: '',
         phonesNumber: '',
-        totalUsage: ''
+        // totalUsage: ''
     }
 
+    
     TvHandler = (tvNumber) => {this.setState({ tvNumber })}
     DecoderHandler = (decoderNumber) => {this.setState({ decoderNumber})}
     SoundSystemHandler = (soundSystemNumber) => {this.setState({ soundSystemNumber})}
@@ -47,65 +48,54 @@ class HomeScreen extends React.Component {
     PhonesHandler = (phonesNumber) => {this.setState({phonesNumber})}
 
 
-
     calculate = () => {
 
-        // let { actions } = this.props
-
-        let TvUsage = 0.72
-        let DecoderUsage = 0.72
-        let SoundSystemUsage = 0.6
-        let LightUsage = 0.16
-        let HeaterUsage = 0.026
-        let StoveUsage = 2
-        let FridgeUsage = 9.6
-        let KettleUsage = 0.333
-        let MicrowaveUsage = 0.257
-        let ComputerUsage = 0.24
-        let PrinterUsage = 0.005
-        let ModemUsage = 0.288
-        let ElectricBlanket = 0.015
-        let PhoneUsage = 0.12
+            // let { actions } = this.props
     
-        let totalUsage = (this.state.tvNumber * TvUsage + this.state.decoderNumber * DecoderUsage + this.state.soundSystemNumber * SoundSystemUsage + this.state.lightsNumber * LightUsage + this.state.heatersNumber * HeaterUsage + this.state.stovesNumber * StoveUsage + this.state.fridgesNumber * FridgeUsage + this.state.kettlesNumber * KettleUsage + this.state.microwavesNumber * MicrowaveUsage + this.state.computersNumber * ComputerUsage + this.state.printersNumber * PrinterUsage +  this.state.modemsNumber * ModemUsage + this.state.electricblanketsNumber * ElectricBlanket + this.state.phonesNumber * PhoneUsage )
+            let TvUsage = 0.72
+            let DecoderUsage = 0.72
+            let SoundSystemUsage = 0.6
+            let LightUsage = 0.16
+            let HeaterUsage = 0.026
+            let StoveUsage = 2
+            let FridgeUsage = 9.6
+            let KettleUsage = 0.333
+            let MicrowaveUsage = 0.257
+            let ComputerUsage = 0.24
+            let PrinterUsage = 0.005
+            let ModemUsage = 0.288
+            let ElectricBlanket = 0.015
+            let PhoneUsage = 0.12
         
-        this.setState({totalUsage})
-        
-        
-        
-        this.props.calculateConsumption(totalUsage)
-        }
-
-
-
-        // let { actions } = this.props
-
-      componentDidMount() {
-
-
- 
-        
-        // calculateConsumption(totalUsage)
-
-      }  
-
-
-    //  calculate = () => {
-
-    //     // let { calculateConsumption } = this.props
-
-
-    // }
-
-                
-
+            let totalUsage = (this.state.tvNumber * TvUsage + this.state.decoderNumber * DecoderUsage + this.state.soundSystemNumber * SoundSystemUsage + this.state.lightsNumber * LightUsage + this.state.heatersNumber * HeaterUsage + this.state.stovesNumber * StoveUsage + this.state.fridgesNumber * FridgeUsage + this.state.kettlesNumber * KettleUsage + this.state.microwavesNumber * MicrowaveUsage + this.state.computersNumber * ComputerUsage + this.state.printersNumber * PrinterUsage +  this.state.modemsNumber * ModemUsage + this.state.electricblanketsNumber * ElectricBlanket + this.state.phonesNumber * PhoneUsage )
+            
+            // https://stackoverflow.com/questions/55348078/react-updates-state-when-clicked-twice
+            // this.setState({totalUsage}) this is an asychronous operation therefore it would delay the dipatching action and would need  
     
-   
+            let data = {
+                tvNumber: this.state.tvNumber ,
+                decoderNumber: this.state.decoderNumber,
+                soundSystemNumber: this.state.soundSystemNumber,
+                lightsNumber: this.state.lightsNumber,
+                heatersNumber: this.state.heatersNumber,
+                stovesNumber: this.state.stovesNumber,
+                fridgesNumber: this.state.fridgesNumber,
+                kettlesNumber: this.state.kettlesNumber ,
+                microwavesNumber: this.state.microwavesNumber,
+                computersNumber: this.state.computersNumber,
+                printersNumber: this.state.printersNumber,
+                modemsNumber: this.state.modemsNumber,
+                electricblanketsNumber: this.state.electricblanketsNumber ,
+                phonesNumber: this.state.phonesNumber,
+                totalUsage: totalUsage
+            } 
+            
+            this.props.calculateConsumption(data)
+            
+            }
+    
 
 
-    componentDidUpdate(){
-        // this.calculate()
-    }
 
 
     render(){
@@ -250,12 +240,7 @@ class HomeScreen extends React.Component {
                         title = "Calculate"
                         onPress = {this.calculate}
                     />
-                    <Text>Consumption: {this.props.consumption} kWh/day </Text>
-                    {/* <Text>{this.state.totalUsage}</Text> */}
-                    {/* <Button
-                        title="Calculate"
-                        onPress={()=>{ Alert.alert('You pressed the calculate button')}}
-                    /> */}
+                    <Text>Consumption: {this.props.data.totalUsage} kWh/day </Text>
                     < StatusBar />
                     </View>
                     </ScrollView>
@@ -276,15 +261,15 @@ class HomeScreen extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        consumption:  state.consumption.consumption
+        data:  state.data
     }
 
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         // https://dev.to/colerau/how-redux-s-mapdispatchtoprops-works-3aal 
-        calculateConsumption: totalUsage => dispatch(calculateConsumption(totalUsage)), 
+        calculateConsumption: (data) => dispatch(calculateConsumption(data)), 
     }
 }
 
@@ -316,5 +301,5 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         fontFamily: "Cochin"
-    }
+    },
 })

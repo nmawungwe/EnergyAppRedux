@@ -3,10 +3,24 @@ import React from 'react';
 import {StyleSheet, Text, View, Button, Alert} from 'react-native'
 import { connect } from 'react-redux';
 
-function StatsScreen ({consumption}) {
+function StatsScreen ({data}) {
     return(
         <View style={styles.container}>
-        <Text>Your current consumption is {consumption} kWh/day</Text>
+        <Text>Tvs: {data.tvNumber}</Text>
+        <Text>Decoders: {data.decoderNumber}</Text>
+        <Text>SoundSystems: {data.soundSystemNumber}</Text>
+        <Text>Lights: {data.lightsNumber}</Text>
+        <Text>Heaters: {data.heatersNumber}</Text>
+        <Text>Stoves: {data.stovesNumber}</Text>
+        <Text>Fridges: {data.fridgesNumber}</Text>
+        <Text>Kettles: {data.kettlesNumber}</Text>
+        <Text>Microwaves: {data.microwavesNumber}</Text>
+        <Text>Computers: {data.computersNumber}</Text>
+        <Text>Printers: {data.printersNumber}</Text>
+        <Text>Modems: {data.modemsNumber}</Text>
+        <Text>Electric Blankets: {data.electricblanketsNumber}</Text>
+        <Text>Phones: {data.phonesNumber}</Text>
+        <Text>Total Consumption: {data.totalUsage} kWh/day</Text>
         < StatusBar />
       </View>
     )
@@ -15,7 +29,7 @@ function StatsScreen ({consumption}) {
 
 const mapStateToProps = (state) => {
     return {
-        consumption: state.consumption.consumption
+        data:  state.data
     }
 }
 
