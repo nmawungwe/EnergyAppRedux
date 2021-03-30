@@ -47,6 +47,10 @@ class HomeScreen extends React.Component {
     ElectricblanketsHandler = (electricblanketsNumber) => {this.setState({electricblanketsNumber})}
     PhonesHandler = (phonesNumber) => {this.setState({phonesNumber})}
 
+    precise = (x) => {
+        return Number.parseFloat(x).toPrecision(3)
+    }
+
 
     calculate = () => {
 
@@ -240,7 +244,7 @@ class HomeScreen extends React.Component {
                         title = "Calculate"
                         onPress = {this.calculate}
                     />
-                    <Text>Consumption: {this.props.data.totalUsage} kWh/day </Text>
+                    <Text>Consumption: {this.precise(this.props.data.totalUsage)} kWh/day </Text>
                     < StatusBar />
                     </View>
                     </ScrollView>

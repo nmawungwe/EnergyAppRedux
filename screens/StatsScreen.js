@@ -4,10 +4,21 @@ import {StyleSheet, Text, View, Button, Alert} from 'react-native'
 import { connect } from 'react-redux';
 
 function StatsScreen ({data}) {
+
+    function precise(x){
+        return Number.parseFloat(x).toPrecision(3)
+    }
+
     return(
         <View style={styles.container}>
-        <Text>Tvs: {data.tvNumber}</Text>
-        <Text>Decoders: {data.decoderNumber}</Text>
+        <View style={styles.row}>
+            <View style={styles.column}>
+                <Text>Tvs: {data.tvNumber}</Text> 
+            </View>
+            <View style={styles.column}>
+                <Text >Decoders: {data.decoderNumber}</Text> 
+            </View>
+        </View>
         <Text>SoundSystems: {data.soundSystemNumber}</Text>
         <Text>Lights: {data.lightsNumber}</Text>
         <Text>Heaters: {data.heatersNumber}</Text>
@@ -20,7 +31,7 @@ function StatsScreen ({data}) {
         <Text>Modems: {data.modemsNumber}</Text>
         <Text>Electric Blankets: {data.electricblanketsNumber}</Text>
         <Text>Phones: {data.phonesNumber}</Text>
-        <Text>Total Consumption: {data.totalUsage} kWh/day</Text>
+        <Text>Total Consumption: {precise(data.totalUsage)} kWh/day</Text>
         < StatusBar />
       </View>
     )
@@ -41,7 +52,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    column :{
+        flexDirection: "column"
+    },
+    row: {
+        flexDirection: "row"
     }
+    
 })
 
 export default connect(mapStateToProps)(StatsScreen)
