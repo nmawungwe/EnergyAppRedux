@@ -242,7 +242,9 @@ class HomeScreen extends React.Component {
                         />
                     </View>
                     <Button
+                        color='#61dafb'
                         title = "Calculate"
+                        accessibilityLabel="Calculate"
                         onPress = {this.calculate}
                     />
                     <Text>Consumption: {this.precise(this.props.data.totalUsage)} kWh/day </Text>
@@ -316,4 +318,7 @@ const styles = StyleSheet.create({
             padding: 8,
             backgroundColor: "#61dafb"
     },
+    // calculateButton: {
+    //     color: "#61dafb"
+    // }
 })
