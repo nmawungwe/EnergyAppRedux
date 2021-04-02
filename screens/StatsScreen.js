@@ -58,6 +58,12 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: "row"
+    },
+    text: {
+        paddingVertical: 8,
+        borderWidth: 4,
+        borderColor: "#20232a",
+        borderRadius: 6
     }
     
 })

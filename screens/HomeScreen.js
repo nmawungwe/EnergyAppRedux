@@ -114,8 +114,9 @@ class HomeScreen extends React.Component {
                         keyboardDismissMode="interactive"
                          >
                     <View style={styles.inner}>
+                    <Text style={styles.title}>Energy App</Text>
                     <View style={styles.inputRow}>
-                        <Text>Number of TVs: </Text>
+                        <Text style={styles.labelText}>Number of TVs: </Text>
                         <TextInput style={styles.textInput}
                             placeholder="Number of TVs"
                             keyboardType='number-pad'
@@ -301,9 +302,18 @@ const styles = StyleSheet.create({
         padding: 10,
         textAlign: 'left'
     },
-    labelText: {
-        fontSize: 20,
-        fontWeight: "bold",
-        fontFamily: "Cochin"
+    title: {
+            paddingVertical: 8,
+            borderWidth: 4,
+            borderColor: "#20232a",
+            borderRadius: 6,
+            // width: 175,
+            textAlign: "center",
+            fontSize: 30,
+            fontWeight: "bold",
+            marginTop: 16,
+            borderWidth: 4,
+            padding: 8,
+            backgroundColor: "#61dafb"
     },
 })
