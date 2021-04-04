@@ -42,20 +42,6 @@ export default function App() {
               )
             }}
             />
-          <Tab.Screen
-            name="Tips"
-            component={TipsScreen}
-            options={{
-              tabBarLabel: 'Tips',
-              tabBarIcon: ({color, size}) => (
-                <MaterialCommunityIcons 
-                name="lightbulb-on" 
-                color={color}
-                size={size}
-                />
-              )
-            }}
-          />
           <Tab.Screen 
             name="Stats" 
             component={StatsScreen}
@@ -70,6 +56,36 @@ export default function App() {
               )
             }}
             />
+
+          <Tab.Screen
+            name="Producers"
+            component={LocationScreen}
+            options={{
+              tabBarLabel: 'Producers',
+              tabBarIcon: ({color, size}) => (
+                <MaterialCommunityIcons
+                name="map-marker"
+                color={color}
+                size={size}
+                />
+              )
+            }}
+          />
+
+          <Tab.Screen
+            name="Tips"
+            component={TipsScreen}
+            options={{
+              tabBarLabel: 'Tips',
+              tabBarIcon: ({color, size}) => (
+                <MaterialCommunityIcons 
+                name="lightbulb-on" 
+                color={color}
+                size={size}
+                />
+              )
+            }}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>
