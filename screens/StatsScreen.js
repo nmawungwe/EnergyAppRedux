@@ -11,14 +11,9 @@ function StatsScreen ({data}) {
 
     return(
         <View style={styles.container}>
-        <View style={styles.row}>
-            <View style={styles.column}>
-                <Text>Tvs: {data.tvNumber}</Text> 
-            </View>
-            <View style={styles.column}>
-                <Text >Decoders: {data.decoderNumber}</Text> 
-            </View>
-        </View>
+        <Text style={styles.title}>Energy App</Text>
+        <Text >Tvs: {data.tvNumber}</Text> 
+        <Text >Decoders: {data.decoderNumber}</Text> 
         <Text>SoundSystems: {data.soundSystemNumber}</Text>
         <Text>Lights: {data.lightsNumber}</Text>
         <Text>Heaters: {data.heatersNumber}</Text>
@@ -31,7 +26,7 @@ function StatsScreen ({data}) {
         <Text>Modems: {data.modemsNumber}</Text>
         <Text>Electric Blankets: {data.electricblanketsNumber}</Text>
         <Text>Phones: {data.phonesNumber}</Text>
-        <Text>Total Consumption: {precise(data.totalUsage)} kWh/day</Text>
+        <Text style={styles.reading}>Total Consumption: {precise(data.totalUsage)} kWh/day</Text>
         < StatusBar />
       </View>
     )
@@ -64,7 +59,25 @@ const styles = StyleSheet.create({
         borderWidth: 4,
         borderColor: "#20232a",
         borderRadius: 6
-    }
+    },
+    title: {
+        paddingVertical: 8,
+        borderWidth: 4,
+        borderColor: "#20232a",
+        borderRadius: 6,
+        // width: 175,
+        textAlign: "center",
+        fontSize: 30,
+        fontWeight: "bold",
+        marginTop: 16,
+        marginBottom: 16,
+        borderWidth: 4,
+        padding: 8,
+        backgroundColor: "#61dafb"
+},
+reading: {
+    marginTop: 12
+}
     
 })
 

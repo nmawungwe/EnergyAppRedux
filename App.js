@@ -7,6 +7,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import HomeScreen  from './screens/HomeScreen'
 import StatsScreen from './screens/StatsScreen'
 import TipsScreen from './screens/TipsScreen'
+import LocationScreen from './screens/LocationScreen'
+
 import rootReducer from './reducers/index'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
