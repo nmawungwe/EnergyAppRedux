@@ -24,13 +24,17 @@ export default function LocationScreen () {
         })();
     }, [])
 
-    // let gpsCoords = {}
+    let gpsCoords = {}
     
-    // if (errorMsg) {
-    //     gpsCoords= errorMsg
-    // } else if (location) {
-      let  gpsCoords = JSON.stringify(location)
-    // }
+    if (errorMsg) {
+        text= errorMsg
+        console.log(text)
+    } else if (location) {
+        gpsCoords = {
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude
+        }
+    }
 
     return(
         <View style={styles.container}>
@@ -38,9 +42,10 @@ export default function LocationScreen () {
                 <Marker
                     title="You are here!"
                     coordinate={{
-                        latitude: 1,
-                        longitude: 1
+                        latitude: gpsCoords.latitude,
+                        longitude: gpsCoords.longitude
                     }}
+                    pinColor='#0c22eb'
                 />
                 <Marker
                     title="Koeberg"
