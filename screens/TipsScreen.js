@@ -12,7 +12,6 @@ const TipsScreen = ({tips}) => {
 
     return(
         <View style={styles.container}>
-        <Text>Screen 2 (Tips Page)</Text>
         {renderTips()}
         < StatusBar />
       </View>

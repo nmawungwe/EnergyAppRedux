@@ -5,7 +5,7 @@ import {StyleSheet, Text, View} from 'react-native'
 export const Tip = ({tip}) => (
     <View>
         <Text style={styles.title}>{tip.title}</Text>
-            <Text style={styles.body}>{tip.body}</Text>
+            <Text style={styles.body}>{tip.body.substring(0, 100)}</Text>
     </View>
 )
 
