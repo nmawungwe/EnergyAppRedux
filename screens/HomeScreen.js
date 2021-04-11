@@ -247,7 +247,7 @@ class HomeScreen extends React.Component {
                         accessibilityLabel="Calculate"
                         onPress = {this.calculate}
                     />
-                    <Text>Consumption: {this.precise(this.props.data.totalUsage)} kWh/day </Text>
+                    <Text style={styles.totalUsage}>Consumption: {this.precise(this.props.data.totalUsage)} kWh/day </Text>
                     < StatusBar />
                     </View>
                     </ScrollView>
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
             padding: 8,
             backgroundColor: "#61dafb"
     },
-    // calculateButton: {
-    //     color: "#61dafb"
-    // }
+    totalUsage: {
+       fontWeight: 'bold'
+    }
 })

@@ -11,6 +11,10 @@ export default function TipScreen ({route, navigation}) {
         <View style={styles.container}>
             <Text style={styles.title}>{tip.title}</Text>
             <Text style={styles.body}>{tip.body}</Text>
+            <Button
+                title="Back"
+                onPress={()=> navigation.navigate('Tips')}
+            />
         < StatusBar />
       </View>
     )
@@ -22,13 +26,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 24,
     }, 
     title: {
         fontWeight: 'bold',
-        textAlign: 'left'
+        textAlign: 'left',
+        padding: 8
     }, 
     body: {
-        textAlign:'justify'
+        textAlign:'justify',
+        marginBottom: 8
     }
 })
 

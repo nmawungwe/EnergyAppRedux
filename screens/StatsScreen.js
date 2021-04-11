@@ -12,6 +12,7 @@ function StatsScreen ({data}) {
     return(
         <View style={styles.container}>
         <Text style={styles.title}>Energy App</Text>
+        <View style={styles.appliances}>
         <Text >Tvs: {data.tvNumber}</Text> 
         <Text >Decoders: {data.decoderNumber}</Text> 
         <Text>SoundSystems: {data.soundSystemNumber}</Text>
@@ -27,6 +28,7 @@ function StatsScreen ({data}) {
         <Text>Electric Blankets: {data.electricblanketsNumber}</Text>
         <Text>Phones: {data.phonesNumber}</Text>
         <Text style={styles.reading}>Total Consumption: {precise(data.totalUsage)} kWh/day</Text>
+        </View>
         < StatusBar />
       </View>
     )
@@ -47,6 +49,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    appliances: {
+        borderColor: '#61dafb',
+        padding: 8,
+        borderWidth: 2,
+        borderRadius: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     column :{
         flexDirection: "column"
@@ -74,11 +84,11 @@ const styles = StyleSheet.create({
         borderWidth: 4,
         padding: 8,
         backgroundColor: "#61dafb"
-},
-reading: {
-    marginTop: 12
-}
-    
+    },
+    reading: {
+        marginTop: 12,
+        fontWeight: "bold",
+    },    
 })
 
 export default connect(mapStateToProps)(StatsScreen)

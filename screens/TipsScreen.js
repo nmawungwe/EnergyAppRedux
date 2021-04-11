@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {StyleSheet, Text, View, Button, Alert} from 'react-native'
+import {StyleSheet, Text, View, Button, Alert, SafeAreaView, ScrollView} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -18,8 +18,12 @@ const TipsScreen = ({tips}) => {
 
     return(
         <View style={styles.container}>
-        {renderTips()}
-        < StatusBar />
+            <SafeAreaView>
+                <ScrollView>
+                {renderTips()}
+                < StatusBar />
+                </ScrollView>
+            </SafeAreaView>
       </View>
     )
 }
@@ -30,6 +34,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 24,
+
     }
 })
 
